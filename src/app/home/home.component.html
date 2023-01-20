@@ -1,0 +1,29 @@
+
+<div class="alyo-padding-10px alyo-larghezza-100 ">
+  <div class="alyo-posizione-relativo">
+    <div id="alyo-log-copyall" class=" alyo-posizione-assoluto alyo-bordo-rotondo-5px alyo-testo-bianco alyo-padding-5px alyo-testo-12px" style="top: -1rem; z-index: 10; display: none; backdrop-filter: blur(15px); background-color: rgba(0, 0, 0, 0.5); left: 50%;  transform: translate(-50%, -50%);">Copiato Negli Appunti</div>
+   <input [ngClass]="[cac.colorefisso('sfondocontenitore',0),cac.colorefisso('testo',0)]" class=" alyo-bordo-0px alyo-padding-10px alyo-bordo-rotondo-10px alyo-larghezza-100 alyo-ombra" value="{{ testo2 }}" (keyup)="testo2 = onkey($event)" placeholder="Inserisci Testo" >
+    <div class="alyo-posizione-assoluto" style="top: 0.5rem; right: 10px;">
+    <button class="alyo-bordo-0px alyo-testo-grigio40" style="width: 25px; background-color: rgba(255, 255, 255, 0);" (click)="testo2 = '';" *ngIf="testo2.length"><fa-icon [icon]=faCircleXmark></fa-icon></button>
+    <button class="alyo-bordo-0px alyo-testo-grigio40" style="width: 25px; background-color: rgba(255, 255, 255, 0);" (click)="alyoCopyAllTextFonts(); alyoLogCopy(-1);"><fa-icon [icon]=faClone></fa-icon></button>
+   </div>
+  </div>
+</div>
+
+  <div *ngFor="let item of caratteri | keyvalue; let i = index" [attr.data-index]="i" >
+   <div class="alyo-padding-10px alyo-larghezza-100">
+
+    <div class="alyo-posizione-relativo alyo-altezza-40px">
+      <div class="alyo-log-copy alyo-posizione-assoluto alyo-bordo-rotondo-5px alyo-testo-bianco alyo-padding-5px alyo-testo-12px" style="top: -1rem; z-index: 10; display: none; backdrop-filter: blur(15px); background-color: rgba(0, 0, 0, 0.5); left: 50%;  transform: translate(-50%, -50%);">Copiato Negli Appunti</div>
+      <input [ngClass]="[cac.colorefisso('sfondocontenitore',0),cac.colorefisso('testo',0)]" class=" alyo-bordo-0px alyo-padding-10px alyo-bordo-rotondo-10px alyo-larghezza-100 alyo-ombra " value="{{ convertiTesto(item,testo2) }}" (keyup)="conversione2(item,onkey($event))" placeholder="{{ convertiTesto(item,'Inserisci testo')  }}" >
+      <div class="alyo-posizione-assoluto" style="top: 0.5rem; right: 10px;">
+        <button class="alyo-bordo-0px alyo-bianco alyo-testo-grigio40 " style="width: 25px; background-color: rgba(255, 255, 255, 0);" (click)="testo2 = '';" *ngIf="testo2.length"><fa-icon [icon]=faCircleXmark></fa-icon></button>
+        <button class="alyo-bordo-0px alyo-bianco alyo-testo-grigio40 " style="width: 25px; background-color: rgba(255, 255, 255, 0);" (click)="alyoCopy(convertiTesto(item,testo2)); alyoLogCopy(i);"><fa-icon [icon]=faClone></fa-icon></button>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+
